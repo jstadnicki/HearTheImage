@@ -87,20 +87,6 @@ namespace HearTheImage.ViewModels
         {
             return SelectedImage != null && Images.IndexOf(SelectedImage) < Images.Count - 1;
         }
-
-        private DelegateCommand _play;
-        public DelegateCommand Play
-        {
-            get { return _play ?? (_play = new DelegateCommand(playExecute, playCanExecute)); }
-        }
-        private void playExecute(object parameter)
-        {
-            //TODO: implement
-        }
-        private bool playCanExecute(object parameter)
-        {
-            return Images.Count > 0;
-        }
         #endregion
 
         private ObservableCollection<string> _images;
@@ -108,25 +94,13 @@ namespace HearTheImage.ViewModels
         {
             get
             {
-                if(_images == null)
-                {
-                    _images = new ObservableCollection<string>();
-                    _images.CollectionChanged -= _images_CollectionChanged;
-                    _images.CollectionChanged += _images_CollectionChanged;
-                }
-                return _images;
+                return _images ?? (_images = new ObservableCollection<string>());
             }
             set
             {
                 _images = value;
-                Play.RaiseCanExecuteChanged();
                 Notify("Images");
             }
-        }
-
-        private void _images_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            Play.RaiseCanExecuteChanged();
         }
 
         private string _selectedImage;

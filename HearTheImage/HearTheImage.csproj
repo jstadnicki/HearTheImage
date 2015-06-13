@@ -86,6 +86,7 @@
     <Compile Include="StoryWord.cs" />
     <Compile Include="ViewModels\CreatorVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
+    <Compile Include="ViewModels\PresentationVM.cs" />
     <Page Include="Controls\PresentationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

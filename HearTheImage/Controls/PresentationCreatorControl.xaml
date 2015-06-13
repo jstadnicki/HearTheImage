@@ -27,7 +27,6 @@
             <Button Content="Remove image" Command="{Binding Path=RemoveImage}" Margin="5"/>
             <Button Content="Move up" Command="{Binding Path=MoveUp}" Margin="5"/>
             <Button Content="Move down" Command="{Binding Path=MoveDown}" Margin="5"/>
-            <Button Content="Play" Command="{Binding Path=Play}" Margin="5"/>
         </StackPanel>
     </Grid>
 </UserControl>
