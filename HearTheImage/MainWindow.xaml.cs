@@ -25,4 +25,20 @@ namespace HearTheImage
             InitializeComponent();
         }
     }
+
+
+    public interface IImageAnalyzer
+    {
+        IList<IList<string>> GetWords(IEnumerable<Image> images);
+    }
+
+    public interface ISynonymGenerator
+    {
+        Dictionary<string, List<string>> GetSynonyms(List<string> words);
+    }
+
+    public interface ISoundsProvider
+    {
+        Guid GetSoundForWord(string word);
+    }
 }
