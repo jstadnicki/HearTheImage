@@ -41,4 +41,9 @@ namespace HearTheImage
     {
         StorySound GetSoundForWord(string word);
     }
+
+    public interface ISoundMixer
+    {
+        StorySoundMix MixSounds(List<StorySound> sounds);
+    }
 }

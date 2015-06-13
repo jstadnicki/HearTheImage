@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="StoryImage.cs" />
     <Compile Include="StorySound.cs" />
+    <Compile Include="StorySoundMix.cs" />
     <Compile Include="StoryWord.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
