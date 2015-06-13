@@ -24,6 +24,11 @@ namespace HearTheImage.Helpers
             _execute(parameter);
         }
 
+        public void RaiseCanExecuteChanged()
+        {
+            if (CanExecuteChanged != null) CanExecuteChanged(this, new EventArgs());
+        }
+
         public DelegateCommand(Action<object> execute, Func<object, bool> canExecute)
         {
             if (execute != null) _execute = execute;

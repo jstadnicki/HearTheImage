@@ -4,20 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HearTheImage"
+        xmlns:vm ="clr-namespace:HearTheImage.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <vm:MainVM/>
+    </Window.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Menu>
-            <MenuItem Header="File">
-                <MenuItem Header="Open..."/>
-                <Separator/>
-                <MenuItem Header="Close"/>
-            </MenuItem>
-        </Menu>
-        <ContentControl Height="1"/>
+        <ContentControl Content="{Binding Path=Control}"/>
     </Grid>
 </Window>
