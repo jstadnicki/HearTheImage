@@ -16,6 +16,16 @@ namespace HearTheImage.ViewModels
         public IBassPlayer _bassPlayer;
         private List<string> _images;
 
+        public MainVM()
+        {
+            _imageAnalyzer = new ImageAnalyzer();
+            _soundMixer = new SoundMixer();
+            _imageUrlProvider = new AzureBlobStorage();
+            _soundsProvider = new SoundsProvider();
+            _bassPlayer = new BassPlayer();
+            _images = new List<string>();
+        }
+
         private bool _isPresentation;
         public bool IsPresentation
         {
