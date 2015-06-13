@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -31,9 +32,12 @@ namespace HearTheImage
 
         public async void doSomething()
         {
-            var azure = new AzureBlobStorage();
-            Debug.WriteLine(await
-                azure.GetImageUrlFromFile(new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg")));
+            var images = new ImageAnalyzer();
+            var list = new List<StoryImage>();
+            list.Add(
+                new StoryImage(new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg")));
+            await images.GetWords(list);
+
 
         }
     }

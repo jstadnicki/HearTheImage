@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HearTheImage
 {
     public interface IImageAnalyzer
     {
-        Dictionary<StoryImage, List<string>> GetWords(IEnumerable<StoryImage> images);
+        Task<Dictionary<StoryImage, List<string>>> GetWords(IEnumerable<StoryImage> images);
     }
 }
