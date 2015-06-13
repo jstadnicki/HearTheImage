@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Mix;
 
 namespace HearTheImage
@@ -7,17 +10,13 @@ namespace HearTheImage
     {
         public int MixSounds(List<StorySound> sounds)
 		{
-            int mixerStream = BassMix.BASS_Mixer_StreamCreate(44100, 2, BASSFlag.BASS_SAMPLE_FLOAT );
-            List<int> streams;
-              
-            foreach(var sound in sounds)
-            {
-                streams.add(CreateStream(sound.get()));
-            }
-            return MixStreams(streams, mixerStream);
+            var mixerStream = BassMix.BASS_Mixer_StreamCreate(44100, 2, BASSFlag.BASS_SAMPLE_FLOAT );
+            var streams = sounds.Select(sound => CreateStream(sound.SoundFile)).ToList();
+            this.MixStreams(streams, mixerStream);
+            return mixerStream;
         }
         
-        private int MixStreams(List<int> streams, int mixerStream)
+        private void MixStreams(List<int> streams, int mixerStream)
         {
             foreach(var stream in streams)
             {

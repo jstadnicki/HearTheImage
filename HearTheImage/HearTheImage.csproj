@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.11.0, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -57,9 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AzureBlobStorage.cs" />
-    <Compile Include="IImageAnalyzer.cs" />
-    <Compile Include="IImageUrlProvider.cs" />
+    <Compile Include="Implementations\AzureBlobStorage.cs" />
     <Compile Include="Implementations\SynonymGenerator.cs" />
     <Compile Include="Interfaces\IImageAnalyzer.cs" />
     <Compile Include="Interfaces\IImageUrlProvider.cs" />
@@ -67,11 +66,7 @@
     <Compile Include="Interfaces\ISoundMixer.cs" />
     <Compile Include="Interfaces\ISoundsProvider.cs" />
     <Compile Include="Interfaces\ISynonymGenerator.cs" />
-    <Compile Include="IPlayer.cs" />
-    <Compile Include="ISoundMixer.cs" />
-    <Compile Include="ISoundsProvider.cs" />
-    <Compile Include="ISynonymGenerator.cs" />
-    <Compile Include="SoundMixer.cs" />
+    <Compile Include="Implementations\SoundMixer.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="StoryImage.cs" />
     <Compile Include="StorySound.cs" />
