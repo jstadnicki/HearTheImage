@@ -11,6 +11,11 @@
         <vm:MainVM/>
     </Window.DataContext>
     <Grid>
-        <ContentControl Content="{Binding Path=Control}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ContentControl Content="{Binding Path=Control}" Margin="5"/>
+        <Button Grid.Row="1" Content="Play" Command="{Binding Path=Play}" Margin="5"/>
     </Grid>
 </Window>

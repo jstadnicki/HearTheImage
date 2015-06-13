@@ -86,6 +86,7 @@
     <Compile Include="StoryWord.cs" />
     <Compile Include="ViewModels\CreatorVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
+    <Compile Include="ViewModels\PresentationVM.cs" />
     <Page Include="Controls\PresentationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +154,47 @@
     <None Include="Hunspellx86.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bawsie.txt" />
+    <Resource Include="content\Images\bee.jpg" />
+    <Resource Include="content\Images\BeefCattle.jpg" />
+    <Resource Include="content\Images\CatMeow.jpg" />
+    <Resource Include="content\Images\chicken.jpg" />
+    <Resource Include="content\Images\Dog.jpg" />
+    <Resource Include="content\Images\duck.jpg" />
+    <Resource Include="content\Images\Elephant.jpg" />
+    <Resource Include="content\Images\Hog.jpg" />
+    <Resource Include="content\Images\Lion.jpg" />
+    <Resource Include="content\Images\Monkey.jpg" />
+    <Resource Include="content\Images\Mosquito.jpg" />
+    <Resource Include="content\Images\MountainLion.jpeg" />
+    <Resource Include="content\Images\Owl.jpg" />
+    <Resource Include="content\Images\Pig.jpg" />
+    <Resource Include="content\Images\Tiger.jpg" />
+    <Resource Include="content\Images\Woodpecker.jpg" />
+    <Content Include="content\Sounds\Bee.mp3" />
+    <Content Include="content\Sounds\CatMeaw.mp3" />
+    <Content Include="content\Sounds\Chicken.mp3" />
+    <Content Include="content\Sounds\Cow.mp3" />
+    <Content Include="content\Sounds\Dog.mp3" />
+    <Content Include="content\Sounds\Duck.mp3" />
+    <Content Include="content\Sounds\ElephantAngry.mp3" />
+    <Content Include="content\Sounds\Hog.mp3" />
+    <Content Include="content\Sounds\HorseWalkingInWater.mp3" />
+    <Content Include="content\Sounds\JungleAnimalsSound.mp3" />
+    <Content Include="content\Sounds\LionRoar.mp3" />
+    <Content Include="content\Sounds\Monkey.mp3" />
+    <Content Include="content\Sounds\Mosquito.mp3" />
+    <Content Include="content\Sounds\MountainLion.mp3" />
+    <Content Include="content\Sounds\Owl.mp3" />
+    <Content Include="content\Sounds\Peacock.mp3" />
+    <Content Include="content\Sounds\PigSqueal.mp3" />
+    <Content Include="content\Sounds\Sheep.mp3" />
+    <Content Include="content\Sounds\Tiger.mp3" />
+    <Content Include="content\Sounds\TigerGrowl.mp3" />
+    <Content Include="content\Sounds\Vulture.mp3" />
+    <Content Include="content\Sounds\Woodpecker.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

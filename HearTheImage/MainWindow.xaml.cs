@@ -41,7 +41,31 @@ namespace HearTheImage
                     {
                         await
                             azure.GetImageUrlFromFile(
-                                new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg"))
+                                new FileInfo("../../content/Images/Dog.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/duck.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Elephant.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Hog.jpg")),
+                        await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Lion.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Monkey.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Mosquito.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/MountainLion.jpeg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Owl.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Pig.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Tiger.jpg")),await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("../../content/Images/Woodpecker.jpg")),
+
                     });
             foreach (var k in x)
             {
