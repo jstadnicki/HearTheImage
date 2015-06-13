@@ -57,12 +57,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AzureBlobStorage.cs" />
     <Compile Include="IImageAnalyzer.cs" />
     <Compile Include="IImageUrlProvider.cs" />
+    <Compile Include="Implementations\SynonymGenerator.cs" />
+    <Compile Include="Interfaces\IImageAnalyzer.cs" />
+    <Compile Include="Interfaces\IImageUrlProvider.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Interfaces\ISoundMixer.cs" />
+    <Compile Include="Interfaces\ISoundsProvider.cs" />
+    <Compile Include="Interfaces\ISynonymGenerator.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="ISoundMixer.cs" />
     <Compile Include="ISoundsProvider.cs" />
     <Compile Include="ISynonymGenerator.cs" />
+    <Compile Include="SoundMixer.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="StoryImage.cs" />
     <Compile Include="StorySound.cs" />
@@ -117,6 +126,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="content\en_US.aff" />
+    <None Include="content\en_US.dic" />
+    <None Include="content\th_en_US_new.dat" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,7 +139,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Hunspellx64.dll" />
+    <Content Include="Hunspellx86.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

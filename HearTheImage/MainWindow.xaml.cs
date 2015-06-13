@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HearTheImage.Implementations;
 
 namespace HearTheImage
 {
@@ -23,6 +26,15 @@ namespace HearTheImage
         public MainWindow()
         {
             InitializeComponent();
+            doSomething();
+        }
+
+        public async void doSomething()
+        {
+            var azure = new AzureBlobStorage();
+            Debug.WriteLine(await
+                azure.GetImageUrlFromFile(new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg")));
+
         }
     }
 }
