@@ -14,13 +14,16 @@ namespace HearTheImage
             {
                 streams.add(CreateStream(sound.get()));
             }
-            
+            return MixStreams(streams, mixerStream);
+        }
+        
+        private int MixStreams(List<int> streams, int mixerStream)
+        {
             foreach(var stream in streams)
             {
                 BassMix.BASS_Mixer_StreamAddChannel(mixerStream, stream, 
                    BASSFlag.BASS_STREAM_AUTOFREE | BASSFlag.BASS_MIXER_DOWNMIX);
             }
-            return mixerStream;
         }
         
         private int CreateStream(FileInfo file)
