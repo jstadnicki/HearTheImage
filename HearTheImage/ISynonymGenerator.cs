@@ -9,7 +9,7 @@
     {
         public StoryWord GetSynonyms(string word)
         {
-            
+            return null;
         }
     }
 }
