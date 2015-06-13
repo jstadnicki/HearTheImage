@@ -79,7 +79,6 @@
     <Compile Include="Interfaces\ISoundMixer.cs" />
     <Compile Include="Interfaces\ISoundsProvider.cs" />
     <Compile Include="Interfaces\ISynonymGenerator.cs" />
-    <Compile Include="Implementations\SoundMixer.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="StoryImage.cs" />
     <Compile Include="StorySound.cs" />

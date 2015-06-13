@@ -33,10 +33,24 @@ namespace HearTheImage
         public async void doSomething()
         {
             var images = new ImageAnalyzer();
-            var list = new List<StoryImage>();
-            list.Add(
-                new StoryImage(new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg")));
             
+            AzureBlobStorage azure = new AzureBlobStorage();
+            var x =
+                await
+                    images.GetWords(new List<string>()
+                    {
+                        await
+                            azure.GetImageUrlFromFile(
+                                new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg"))
+                    });
+            foreach (var k in x)
+            {
+                Debug.WriteLine(k.Key);
+                foreach (var z in k.Value)
+                {
+                    Debug.WriteLine(z);
+                }
+            }
 
 
         }

@@ -24,8 +24,8 @@ namespace HearTheImage
                 var responseString =
                     (await response.Content.ReadAsStringAsync());
                 responseString = responseString.Replace("[\"Concept\",", "")
-                        .Replace("Entity", "")
-                        .Replace("\"]", "\"");
+                    .Replace("Entity", "")
+                    .Replace("\"]", "\"");
                 responseString = "[" + responseString.Remove(0, 1);
                 responseString = responseString.Remove(responseString.Length - 1, 1);
                 responseString += "]";
@@ -34,7 +34,6 @@ namespace HearTheImage
 
                 results.Add(image, @object);
             }
-
             return results;
         }
     }
