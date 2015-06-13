@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IImageAnalyzer.cs" />
+    <Compile Include="IImageUrlProvider.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="ISoundMixer.cs" />
     <Compile Include="ISoundsProvider.cs" />
