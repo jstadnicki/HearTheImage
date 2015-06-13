@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -30,8 +31,9 @@ namespace HearTheImage
 
         public async void doSomething()
         {
+            var azure = new AzureBlobStorage();
             Debug.WriteLine(await
-                AzureBlobStorage.GetUrlFromFile("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg"));
+                azure.GetImageUrlFromFile(new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg")));
 
         }
     }

@@ -10,7 +10,7 @@ namespace HearTheImage
 {
     public class AzureBlobStorage : IImageUrlProvider
     {
-        public async Task<string> GetUrlFromFile(FileInfo pathToFile)
+        public async Task<string> GetImageUrlFromFile(FileInfo pathToFile)
         {
             var accountName = "artofcode";
             var accountKey = "Qbvz9rE8Oq5OZQoxP9D7qAmB+dNnuWp23yXzLHdeBO5+IcaDm8Pgv0/SY4bH61KHRuD7yNOmOvDiEC0HXPp1gw==";
