@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,18 @@ namespace HearTheImage.ViewModels
 {
     public class CreatorVM : ViewModelBase
     {
+        private IImageUrlProvider _imageUrlProvider;
+        private IImageAnalyzer _imageAnalyzer;
+        private ISoundMixer _soundMixer;
+        private ISoundsProvider _soundsProvider;
+
         #region Commands
         private DelegateCommand _addImages;
         public DelegateCommand AddImages
         {
             get { return _addImages ?? (_addImages = new DelegateCommand(addImagesExecute, (x) => true)); }
         }
+
         private void addImagesExecute(object parameter)
         {
             var openFileDialog = new OpenFileDialog();
@@ -95,8 +102,35 @@ namespace HearTheImage.ViewModels
         }
         private void playExecute(object parameter)
         {
-            //TODO: implement
+            Dictionary<StoryImage, List<string>> imagesWithWords = GetImagesWithWords();
+
+            var storySlides = imagesWithWords.Select(
+                image => new StorySlide(image.Key, image.Value.Select(word => _soundsProvider.GetSoundForWord(word))))
+                .ToList();
+
+            List<StoryImageWithBackgrounMusic> storyImageWithBackgrounMusics = storySlides.Select(
+                slide => new StoryImageWithBackgrounMusic(slide.Image, this._soundMixer.MixSounds(slide.Sounds.ToList()))).ToList();
         }
+
+        private Dictionary<StoryImage, List<string>> GetImagesWithWords()
+        {
+            Dictionary<StoryImage, Task<string>> urlTasks = this.Images.Select(file => new FileInfo(file))
+                .ToList()
+                .ToDictionary(x => new StoryImage(x), x => this._imageUrlProvider.GetImageUrlFromFile(x));
+
+            Dictionary<StoryImage, string> imageFileUrlDictionary = urlTasks.ToDictionary(x => x.Key,
+                x => x.Value.Result);
+
+            Dictionary<StoryImage, Dictionary<string, List<string>>> dictionary = imageFileUrlDictionary.ToDictionary(
+                x => x.Key,
+                x => this._imageAnalyzer.GetWords(new List<string> {x.Value}).Result);
+
+            Dictionary<StoryImage, List<string>> imagesWithWords = dictionary.ToDictionary(x => x.Key,
+                x => x.Value.SelectMany(v => v.Value).ToList());
+
+            return imagesWithWords;
+        }
+
         private bool playCanExecute(object parameter)
         {
             return Images.Count > 0;
@@ -141,6 +175,30 @@ namespace HearTheImage.ViewModels
                 MoveDown.RaiseCanExecuteChanged();
                 Notify("SelectedImage");
             }
+        }
+    }
+
+    internal class StoryImageWithBackgrounMusic
+    {
+        public StoryImage Image { get; set; }
+        public int BassMixedStream { get; set; }
+
+        public StoryImageWithBackgrounMusic(StoryImage image, int bassMixedStream)
+        {
+            this.Image = image;
+            this.BassMixedStream = bassMixedStream;
+        }
+    }
+
+    internal class StorySlide
+    {
+        public StoryImage Image { get; set; }
+        public IEnumerable<StorySound> Sounds { get; set; }
+
+        public StorySlide(StoryImage image, IEnumerable<StorySound> sounds)
+        {
+            this.Image = image;
+            this.Sounds = sounds;
         }
     }
 }
