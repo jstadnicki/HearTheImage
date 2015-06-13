@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,5 +46,16 @@ namespace HearTheImage
     public interface ISoundMixer
     {
         StorySoundMix MixSounds(List<StorySound> sounds);
+    }
+
+    public interface IPlayer
+    {
+        void Play(Story story);
+    }
+
+    public class Story
+    {
+        List<StoryImage> Images { get; set; }
+        List<StorySoundMix> Mixes { get; set; }
     }
 }
