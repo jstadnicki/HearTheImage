@@ -73,6 +73,7 @@
     <Compile Include="Implementations\AzureBlobStorage.cs" />
     <Compile Include="Implementations\ImageAnalyzer.cs" />
     <Compile Include="Implementations\SynonymGenerator.cs" />
+    <Compile Include="Interfaces\IBassPlayer.cs" />
     <Compile Include="Interfaces\IImageAnalyzer.cs" />
     <Compile Include="Interfaces\IImageUrlProvider.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
