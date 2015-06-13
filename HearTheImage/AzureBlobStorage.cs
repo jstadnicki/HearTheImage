@@ -8,9 +8,9 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace HearTheImage
 {
-    public static class AzureBlobStorage
+    public class AzureBlobStorage : IImageUrlProvider
     {
-        public static async Task<string> GetUrlFromFile(string pathToFile)
+        public async Task<string> GetUrlFromFile(FileInfo pathToFile)
         {
             var accountName = "artofcode";
             var accountKey = "Qbvz9rE8Oq5OZQoxP9D7qAmB+dNnuWp23yXzLHdeBO5+IcaDm8Pgv0/SY4bH61KHRuD7yNOmOvDiEC0HXPp1gw==";
@@ -28,10 +28,7 @@ namespace HearTheImage
                     PublicAccess = BlobContainerPublicAccessType.Container
                 });
                 var blob = sampleContainer.GetBlockBlobReference(Guid.NewGuid().ToString());
-                using (Stream file = System.IO.File.OpenRead(pathToFile))
-                {
-                    blob.UploadFromStream(file);
-                }
+                blob.UploadFromStream(pathToFile.OpenRead());
                 var imageUrl = blob.Uri;
                 return imageUrl.AbsoluteUri;
             }

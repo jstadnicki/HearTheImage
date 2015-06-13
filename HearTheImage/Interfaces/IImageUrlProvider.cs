@@ -1,9 +1,10 @@
 using System.IO;
+using System.Threading.Tasks;
 
 namespace HearTheImage
 {
     public interface IImageUrlProvider
     {
-        string GetImageUrlFromFile(FileInfo inputfile);
+        Task<string> GetImageUrlFromFile(FileInfo inputfile);
     }
 }
