@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,16 +30,32 @@ namespace HearTheImage
 
     public interface IImageAnalyzer
     {
-        IList<IList<string>> GetWords(IEnumerable<Image> images);
+        Dictionary<StoryImage, List<string>> GetWords(IEnumerable<StoryImage> images);
+    }
+
+    public class StoryImage
+    {
+        public FileInfo ImageFile { get; set; }
     }
 
     public interface ISynonymGenerator
     {
-        Dictionary<string, List<string>> GetSynonyms(List<string> words);
+        StoryWord GetSynonyms(string word);
+    }
+
+    public class StoryWord
+    {
+        public string Word { get; set; }
+        public List<string> Synonyms { get; set; }
     }
 
     public interface ISoundsProvider
     {
-        Guid GetSoundForWord(string word);
+        StorySound GetSoundForWord(string word);
+    }
+
+    public class StorySound
+    {
+        public FileInfo SoundFile { get; set; } 
     }
 }
