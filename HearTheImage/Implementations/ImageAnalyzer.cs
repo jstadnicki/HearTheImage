@@ -15,7 +15,7 @@ namespace HearTheImage
 
             foreach (var image in images)
             {
-                Debug.WriteLine(image);
+                //Debug.WriteLine(image);
                 HttpClient httpclient = new HttpClient();
                 var response = await
                     httpclient.GetAsync(
@@ -29,10 +29,11 @@ namespace HearTheImage
                 responseString = "[" + responseString.Remove(0, 1);
                 responseString = responseString.Remove(responseString.Length - 1, 1);
                 responseString += "]";
-                Debug.WriteLine(responseString);
+                //Debug.WriteLine(responseString);
                 var @object = JsonConvert.DeserializeObject<List<string>>(responseString);
 
                 results.Add(image, @object);
+                Debug.WriteLine(image);
             }
             return results;
         }
