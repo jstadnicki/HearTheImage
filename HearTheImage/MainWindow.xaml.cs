@@ -36,7 +36,7 @@ namespace HearTheImage
             var list = new List<StoryImage>();
             list.Add(
                 new StoryImage(new FileInfo("C:\\Users\\marce\\Pictures\\Camera Roll\\WIN_20150605_10_12_34_Pro.jpg")));
-            await images.GetWords(list);
+            
 
 
         }

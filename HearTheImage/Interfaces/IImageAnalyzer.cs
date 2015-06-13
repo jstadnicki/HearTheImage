@@ -5,6 +5,6 @@ namespace HearTheImage
 {
     public interface IImageAnalyzer
     {
-        Task<Dictionary<StoryImage, List<string>>> GetWords(IEnumerable<StoryImage> images);
+        Task<Dictionary<string, List<string>>> GetWords(IEnumerable<string> images);
     }
 }

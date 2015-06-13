@@ -8,19 +8,18 @@ namespace HearTheImage
 {
     public class ImageAnalyzer : IImageAnalyzer
     {
-        public async Task<Dictionary<StoryImage, List<string>>> GetWords(IEnumerable<StoryImage> images)
+        public async Task<Dictionary<string, List<string>>> GetWords(IEnumerable<string> images)
         {
-            var results = new Dictionary<StoryImage, List<string>>();
-            AzureBlobStorage azure = new AzureBlobStorage();
+            var results = new Dictionary<string, List<string>>();
+            
 
             foreach (var image in images)
             {
-                var url = await azure.GetImageUrlFromFile(image.ImageFile);
-                Debug.WriteLine(url);
+                Debug.WriteLine(image);
                 HttpClient httpclient = new HttpClient();
                 var response = await
                     httpclient.GetAsync(
-                        string.Format("https://www.wolframcloud.com/objects/cf7f6caf-1294-4e45-b601-33b5faf1eac2?name={0}", url));
+                        string.Format("https://www.wolframcloud.com/objects/cf7f6caf-1294-4e45-b601-33b5faf1eac2?name={0}", image));
                 response.EnsureSuccessStatusCode();
                 var responseString =
                     (await response.Content.ReadAsStringAsync());
