@@ -16,6 +16,7 @@ namespace HearTheImage.ViewModels
         private IImageAnalyzer _imageAnalyzer;
         private ISoundMixer _soundMixer;
         private ISoundsProvider _soundsProvider;
+        public IBassPlayer _bassPlayer;
 
         #region Commands
         private DelegateCommand _addImages;
@@ -110,6 +111,8 @@ namespace HearTheImage.ViewModels
 
             List<StoryImageWithBackgrounMusic> storyImageWithBackgrounMusics = storySlides.Select(
                 slide => new StoryImageWithBackgrounMusic(slide.Image, this._soundMixer.MixSounds(slide.Sounds.ToList()))).ToList();
+
+
         }
 
         private Dictionary<StoryImage, List<string>> GetImagesWithWords()

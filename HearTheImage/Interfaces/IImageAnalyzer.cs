@@ -7,4 +7,9 @@ namespace HearTheImage
     {
         Task<Dictionary<string, List<string>>> GetWords(IEnumerable<string> images);
     }
+
+    public interface IBassPlayer
+    {
+        void PlayStream(int streamid);
+    }
 }
