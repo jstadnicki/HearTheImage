@@ -15,17 +15,19 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Path=Images}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Path=Images}" SelectedItem="{Binding Path=SelectedImage}" Margin="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding}"/>
+                    <Image Source="{Binding}" Stretch="Uniform" Height="100" Margin="5"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Content="Add image(s)" Command="{Binding Path=AddImages}"/>
-            <Button Content="Remove image"/>
-            <Button Content="Play"/>
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5">
+            <Button Content="Add image(s)" Command="{Binding Path=AddImages}" Margin="5"/>
+            <Button Content="Remove image" Command="{Binding Path=RemoveImage}" Margin="5"/>
+            <Button Content="Move up" Command="{Binding Path=MoveUp}" Margin="5"/>
+            <Button Content="Move down" Command="{Binding Path=MoveDown}" Margin="5"/>
+            <Button Content="Play" Command="{Binding Path=Play}" Margin="5"/>
         </StackPanel>
     </Grid>
 </UserControl>
