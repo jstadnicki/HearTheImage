@@ -35,6 +35,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.11.0, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\BASS.NET\v4.0\Bass.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -58,8 +74,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AzureBlobStorage.cs" />
-    <Compile Include="IImageAnalyzer.cs" />
-    <Compile Include="IImageUrlProvider.cs" />
     <Compile Include="Implementations\SynonymGenerator.cs" />
     <Compile Include="Interfaces\IImageAnalyzer.cs" />
     <Compile Include="Interfaces\IImageUrlProvider.cs" />
@@ -67,10 +81,6 @@
     <Compile Include="Interfaces\ISoundMixer.cs" />
     <Compile Include="Interfaces\ISoundsProvider.cs" />
     <Compile Include="Interfaces\ISynonymGenerator.cs" />
-    <Compile Include="IPlayer.cs" />
-    <Compile Include="ISoundMixer.cs" />
-    <Compile Include="ISoundsProvider.cs" />
-    <Compile Include="ISynonymGenerator.cs" />
     <Compile Include="SoundMixer.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="StoryImage.cs" />
@@ -140,8 +150,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Hunspellx64.dll" />
-    <Content Include="Hunspellx86.dll" />
+    <None Include="Hunspellx64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Hunspellx86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

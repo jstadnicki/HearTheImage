@@ -4,6 +4,6 @@ namespace HearTheImage
 {
     public interface ISoundMixer
     {
-        StorySoundMix MixSounds(List<StorySound> sounds);
+        int MixSounds(List<StorySound> sounds);
     }
 }
