@@ -12,12 +12,6 @@ namespace HearTheImage.ViewModels
 {
     public class CreatorVM : ViewModelBase
     {
-        private IImageUrlProvider _imageUrlProvider;
-        private IImageAnalyzer _imageAnalyzer;
-        private ISoundMixer _soundMixer;
-        private ISoundsProvider _soundsProvider;
-        public IBassPlayer _bassPlayer;
-
         #region Commands
         private DelegateCommand _addImages;
         public DelegateCommand AddImages
@@ -95,49 +89,6 @@ namespace HearTheImage.ViewModels
         {
             return SelectedImage != null && Images.IndexOf(SelectedImage) < Images.Count - 1;
         }
-
-        private DelegateCommand _play;
-        public DelegateCommand Play
-        {
-            get { return _play ?? (_play = new DelegateCommand(playExecute, playCanExecute)); }
-        }
-        private void playExecute(object parameter)
-        {
-            Dictionary<StoryImage, List<string>> imagesWithWords = GetImagesWithWords();
-
-            var storySlides = imagesWithWords.Select(
-                image => new StorySlide(image.Key, image.Value.Select(word => _soundsProvider.GetSoundForWord(word))))
-                .ToList();
-
-            List<StoryImageWithBackgrounMusic> storyImageWithBackgrounMusics = storySlides.Select(
-                slide => new StoryImageWithBackgrounMusic(slide.Image, this._soundMixer.MixSounds(slide.Sounds.ToList()))).ToList();
-
-
-        }
-
-        private Dictionary<StoryImage, List<string>> GetImagesWithWords()
-        {
-            Dictionary<StoryImage, Task<string>> urlTasks = this.Images.Select(file => new FileInfo(file))
-                .ToList()
-                .ToDictionary(x => new StoryImage(x), x => this._imageUrlProvider.GetImageUrlFromFile(x));
-
-            Dictionary<StoryImage, string> imageFileUrlDictionary = urlTasks.ToDictionary(x => x.Key,
-                x => x.Value.Result);
-
-            Dictionary<StoryImage, Dictionary<string, List<string>>> dictionary = imageFileUrlDictionary.ToDictionary(
-                x => x.Key,
-                x => this._imageAnalyzer.GetWords(new List<string> {x.Value}).Result);
-
-            Dictionary<StoryImage, List<string>> imagesWithWords = dictionary.ToDictionary(x => x.Key,
-                x => x.Value.SelectMany(v => v.Value).ToList());
-
-            return imagesWithWords;
-        }
-
-        private bool playCanExecute(object parameter)
-        {
-            return Images.Count > 0;
-        }
         #endregion
 
         private ObservableCollection<string> _images;
@@ -145,25 +96,13 @@ namespace HearTheImage.ViewModels
         {
             get
             {
-                if(_images == null)
-                {
-                    _images = new ObservableCollection<string>();
-                    _images.CollectionChanged -= _images_CollectionChanged;
-                    _images.CollectionChanged += _images_CollectionChanged;
-                }
-                return _images;
+                return _images ?? (_images = new ObservableCollection<string>());
             }
             set
             {
                 _images = value;
-                Play.RaiseCanExecuteChanged();
                 Notify("Images");
             }
-        }
-
-        private void _images_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            Play.RaiseCanExecuteChanged();
         }
 
         private string _selectedImage;
@@ -178,30 +117,6 @@ namespace HearTheImage.ViewModels
                 MoveDown.RaiseCanExecuteChanged();
                 Notify("SelectedImage");
             }
-        }
-    }
-
-    internal class StoryImageWithBackgrounMusic
-    {
-        public StoryImage Image { get; set; }
-        public int BassMixedStream { get; set; }
-
-        public StoryImageWithBackgrounMusic(StoryImage image, int bassMixedStream)
-        {
-            this.Image = image;
-            this.BassMixedStream = bassMixedStream;
-        }
-    }
-
-    internal class StorySlide
-    {
-        public StoryImage Image { get; set; }
-        public IEnumerable<StorySound> Sounds { get; set; }
-
-        public StorySlide(StoryImage image, IEnumerable<StorySound> sounds)
-        {
-            this.Image = image;
-            this.Sounds = sounds;
         }
     }
 }
