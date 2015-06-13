@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IImageAnalyzer.cs" />
+    <Compile Include="IPlayer.cs" />
+    <Compile Include="ISoundMixer.cs" />
+    <Compile Include="ISoundsProvider.cs" />
+    <Compile Include="ISynonymGenerator.cs" />
+    <Compile Include="Story.cs" />
     <Compile Include="StoryImage.cs" />
     <Compile Include="StorySound.cs" />
     <Compile Include="StorySoundMix.cs" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -25,37 +24,5 @@ namespace HearTheImage
         {
             InitializeComponent();
         }
-    }
-
-
-    public interface IImageAnalyzer
-    {
-        Dictionary<StoryImage, List<string>> GetWords(IEnumerable<StoryImage> images);
-    }
-
-    public interface ISynonymGenerator
-    {
-        StoryWord GetSynonyms(string word);
-    }
-
-    public interface ISoundsProvider
-    {
-        StorySound GetSoundForWord(string word);
-    }
-
-    public interface ISoundMixer
-    {
-        StorySoundMix MixSounds(List<StorySound> sounds);
-    }
-
-    public interface IPlayer
-    {
-        void Play(Story story);
-    }
-
-    public class Story
-    {
-        List<StoryImage> Images { get; set; }
-        List<StorySoundMix> Mixes { get; set; }
     }
 }
