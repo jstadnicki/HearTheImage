@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using HearTheImage.Controls;
 
 namespace HearTheImage.ViewModels
 {
@@ -68,7 +69,12 @@ namespace HearTheImage.ViewModels
         }
         private void playExecute(object parameter)
         {
+             
             if (_images == null || _images.Count < 0) return;
+
+            IsPresentation = true;
+
+
             Dictionary<StoryImage, List<string>> imagesWithWords = GetImagesWithWords();
 
             var storySlides = imagesWithWords.Select(
@@ -76,7 +82,14 @@ namespace HearTheImage.ViewModels
                 .ToList();
 
             List<StoryImageWithBackgrounMusic> storyImageWithBackgrounMusics = storySlides.Select(
-                slide => new StoryImageWithBackgrounMusic(slide.Image, this._soundMixer.MixSounds(slide.Sounds.ToList()))).ToList();
+                slide =>
+                    new StoryImageWithBackgrounMusic(slide.Image, this._soundMixer.MixSounds(slide.Sounds.ToList())))
+                .ToList();
+
+
+            var presentationControl = (this.Control as Controls.PresentationControl);
+            var vm = presentationControl.DataContext;
+            (vm as PresentationVM).Images = storyImageWithBackgrounMusics;
         }
 
         private Dictionary<StoryImage, List<string>> GetImagesWithWords()

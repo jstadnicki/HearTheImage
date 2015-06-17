@@ -11,6 +11,6 @@
         <vm:PresentationVM/>
     </UserControl.DataContext>
     <Grid>
-        <Image Source="{Binding Path=CurrentImage}"/>
+        <Image Source="{Binding Path=CurrentImage.Image.ImageFile.FullName}"/>
     </Grid>
 </UserControl>

@@ -1,4 +1,6 @@
-﻿namespace HearTheImage
+﻿using System;
+
+namespace HearTheImage
 {
     public interface ISoundsProvider
     {
@@ -29,6 +31,7 @@
                     return new StorySound(".\\content\\sounds\\Duck.mp3");
                     
             }
+            throw new NotImplementedException();
         }
     }
 }

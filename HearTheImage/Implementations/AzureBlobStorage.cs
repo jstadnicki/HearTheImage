@@ -12,31 +12,35 @@ namespace HearTheImage
     {
         public async Task<string> GetImageUrlFromFile(FileInfo pathToFile)
         {
-            var accountName = "artofcode";
-            var accountKey = "Qbvz9rE8Oq5OZQoxP9D7qAmB+dNnuWp23yXzLHdeBO5+IcaDm8Pgv0/SY4bH61KHRuD7yNOmOvDiEC0HXPp1gw==";
-            try
-            {
-                var creds = new StorageCredentials(accountName, accountKey);
-                var account = new CloudStorageAccount(creds, useHttps: true);
 
-                var client = account.CreateCloudBlobClient();
-
-                var sampleContainer = client.GetContainerReference("photos");
-                await sampleContainer.CreateIfNotExistsAsync();
-                await sampleContainer.SetPermissionsAsync(new BlobContainerPermissions()
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Container
-                });
-                var blob = sampleContainer.GetBlockBlobReference(Guid.NewGuid().ToString());
-                blob.UploadFromStream(pathToFile.OpenRead());
-                var imageUrl = blob.Uri;
-                return imageUrl.AbsoluteUri;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            return "";
+            return "https://artofcode.blob.core.windows.net/photos/6e5767ba-f0c9-4689-a3ab-061501b1a883";
         }
+
+        //var accountName = "artofcode";
+        //    var accountKey = "Qbvz9rE8Oq5OZQoxP9D7qAmB+dNnuWp23yXzLHdeBO5+IcaDm8Pgv0/SY4bH61KHRuD7yNOmOvDiEC0HXPp1gw==";
+        //    try
+        //    {
+        //        var creds = new StorageCredentials(accountName, accountKey);
+        //        var account = new CloudStorageAccount(creds, useHttps: true);
+
+        //        var client = account.CreateCloudBlobClient();
+
+        //        var sampleContainer = client.GetContainerReference("photos");
+        //        await sampleContainer.CreateIfNotExistsAsync();
+        //        await sampleContainer.SetPermissionsAsync(new BlobContainerPermissions()
+        //        {
+        //            PublicAccess = BlobContainerPublicAccessType.Container
+        //        });
+        //        var blob = sampleContainer.GetBlockBlobReference(Guid.NewGuid().ToString());
+        //        blob.UploadFromStream(pathToFile.OpenRead());
+        //        var imageUrl = blob.Uri;
+        //        return imageUrl.AbsoluteUri;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //    return "";
+        //}
     }
 }

@@ -27,7 +27,6 @@ namespace HearTheImage
         public MainWindow()
         {
             InitializeComponent();
-            doSomething();
         }
 
         public async void doSomething()
