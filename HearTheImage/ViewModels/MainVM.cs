@@ -35,14 +35,14 @@ namespace HearTheImage.ViewModels
             {
                 if (value != _isPresentation)
                 {
-                    if(Control is Controls.PresentationCreatorControl)
+                    if (Control is Controls.PresentationCreatorControl)
                     {
                         var vm = (Control as Controls.PresentationCreatorControl).DataContext as CreatorVM;
                         _images = vm.Images.ToList();
                         if (_images == null || _images.Count == 0) return;
                     }
                     _control = value ? (UserControl)(new Controls.PresentationControl()) : (UserControl)(new Controls.PresentationCreatorControl());
-                    if(_control is Controls.PresentationControl)
+                    if (_control is Controls.PresentationControl)
                     {
                         var vm = (Control as Controls.PresentationControl).DataContext as PresentationVM;
                     }
@@ -69,7 +69,7 @@ namespace HearTheImage.ViewModels
         }
         private void playExecute(object parameter)
         {
-             
+
             if (_images == null || _images.Count < 0) return;
 
             IsPresentation = true;
@@ -114,30 +114,6 @@ namespace HearTheImage.ViewModels
         private bool playCanExecute(object parameter)
         {
             return true;
-        }
-    }
-
-    internal class StoryImageWithBackgrounMusic
-    {
-        public StoryImage Image { get; set; }
-        public int BassMixedStream { get; set; }
-
-        public StoryImageWithBackgrounMusic(StoryImage image, int bassMixedStream)
-        {
-            this.Image = image;
-            this.BassMixedStream = bassMixedStream;
-        }
-    }
-
-    internal class StorySlide
-    {
-        public StoryImage Image { get; set; }
-        public IEnumerable<StorySound> Sounds { get; set; }
-
-        public StorySlide(StoryImage image, IEnumerable<StorySound> sounds)
-        {
-            this.Image = image;
-            this.Sounds = sounds;
         }
     }
 }

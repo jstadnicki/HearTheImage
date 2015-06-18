@@ -1,34 +1,39 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Un4seen.Bass;
-using Un4seen.Bass.AddOn.Mix;
+using NAudio.Wave;
 
 namespace HearTheImage
 {
     public class SoundMixer : ISoundMixer
     {
-        public int MixSounds(List<StorySound> sounds)
-		{
-            var mixerStream = BassMix.BASS_Mixer_StreamCreate(44100, 2, BASSFlag.BASS_SAMPLE_FLOAT );
-            var streams = sounds.Select(sound => CreateStream(sound.SoundFile)).ToList();
-            this.MixStreams(streams, mixerStream);
-            return mixerStream;
+        public Mp3FileReader MixSounds(List<StorySound> sounds)
+        {
+            //var output = new MemoryStream();
+                Mp3FileReader reader = new Mp3FileReader(sounds.First().SoundFile.FullName);
+            return reader;
+
+            //foreach (var sound in sounds)
+            //{
+            //    Mp3FileReader reader = new Mp3FileReader(sound.SoundFile.FullName);
+            //    if ((output.Position == 0) && (reader.Id3v2Tag != null))
+            //    {
+            //        output.Write(reader.Id3v2Tag.RawData, 0, reader.Id3v2Tag.RawData.Length);
+            //    }
+            //    Mp3Frame frame;
+            //    while ((frame = reader.ReadNextFrame()) != null)
+            //    {
+            //        output.Write(frame.RawData, 0, frame.RawData.Length);
+            //    }
+
+            //    Mp3
+            //}
+
+            
+
+            //return output;
         }
         
-        private void MixStreams(List<int> streams, int mixerStream)
-        {
-            foreach(var stream in streams)
-            {
-                BassMix.BASS_Mixer_StreamAddChannel(mixerStream, stream, 
-                   BASSFlag.BASS_STREAM_AUTOFREE | BASSFlag.BASS_MIXER_DOWNMIX);
-            }
-        }
         
-        private int CreateStream(FileInfo file)
-        {
-                return Bass.BASS_StreamCreateFile(file.FullName, 0, 0, 
-                        BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT);
-        }
     }
 }

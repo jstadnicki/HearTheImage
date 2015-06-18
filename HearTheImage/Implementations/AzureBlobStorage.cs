@@ -13,7 +13,16 @@ namespace HearTheImage
         public async Task<string> GetImageUrlFromFile(FileInfo pathToFile)
         {
 
-            return "https://artofcode.blob.core.windows.net/photos/6e5767ba-f0c9-4689-a3ab-061501b1a883";
+            switch (pathToFile.Name.ToLower())
+            {
+                case "bee.jpg":
+                    return "https://artofcode.blob.core.windows.net/photos/8bf8e8ed-e57b-44f9-b302-ff07d2d93c77";
+                case "catmeow.jpg":
+                    return "https://artofcode.blob.core.windows.net/photos/c75d3966-6776-4beb-abff-997bd5c52dcf";
+                case "duck.jpg":
+                    return "https://artofcode.blob.core.windows.net/photos/03874c23-9605-4255-91f5-4b3cb1381e31";
+            }
+            throw new NotImplementedException();
         }
 
         //var accountName = "artofcode";

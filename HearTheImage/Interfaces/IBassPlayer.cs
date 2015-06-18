@@ -1,17 +1,22 @@
-﻿using Un4seen.Bass;
+﻿using System.IO;
+using System.Media;
+using NAudio.Wave;
+using Un4seen.Bass;
 
 namespace HearTheImage
 {
     public interface IBassPlayer
     {
-        void PlayStream(int streamid);
+        void PlayStream(Mp3FileReader streamid);
     }
 
     class BassPlayer : IBassPlayer
     {
-        public void PlayStream(int streamid)
+        public void PlayStream(Mp3FileReader streamid)
         {
-            Bass.BASS_ChannelPlay(streamid, false);
+            var waveOutDevice = new WaveOut();
+            waveOutDevice.Init(streamid);
+            waveOutDevice.Play();
         }
     }
 }

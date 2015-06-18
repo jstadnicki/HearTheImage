@@ -11,7 +11,7 @@ namespace HearTheImage.ViewModels
 {
     class PresentationVM : ViewModelBase
     {
-        private static int interval = 15000;
+        private static int interval = 5000;
         private int index = 0;
         private Timer timer;
 
@@ -30,7 +30,7 @@ namespace HearTheImage.ViewModels
             ++index;
             if (index > Images.Count - 1) index = 0;
             CurrentImage = Images[index];
-            this._bassplayer.PlayStream(CurrentImage.BassMixedStream);
+            this._bassplayer.PlayStream(this.CurrentImage.BassMixedStream);
         }
 
         private List<StoryImageWithBackgrounMusic> _images;

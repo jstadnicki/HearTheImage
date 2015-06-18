@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.IO;
+using NAudio.Wave;
 
 namespace HearTheImage
 {
     public interface ISoundMixer
     {
-        int MixSounds(List<StorySound> sounds);
+        Mp3FileReader MixSounds(List<StorySound> sounds);
     }
 }

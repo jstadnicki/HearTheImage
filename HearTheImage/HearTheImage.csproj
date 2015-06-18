@@ -43,6 +43,10 @@
       <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NAudio, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.7.3\lib\net35\NAudio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +96,8 @@
     <Compile Include="ViewModels\CreatorVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="ViewModels\PresentationVM.cs" />
+    <Compile Include="ViewModels\StoryImageWithBackgrounMusic.cs" />
+    <Compile Include="ViewModels\StorySlide.cs" />
     <Page Include="Controls\PresentationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,28 +184,72 @@
     <Resource Include="content\Images\Pig.jpg" />
     <Resource Include="content\Images\Tiger.jpg" />
     <Resource Include="content\Images\Woodpecker.jpg" />
-    <Content Include="content\Sounds\Bee.mp3" />
-    <Content Include="content\Sounds\CatMeaw.mp3" />
-    <Content Include="content\Sounds\Chicken.mp3" />
-    <Content Include="content\Sounds\Cow.mp3" />
-    <Content Include="content\Sounds\Dog.mp3" />
-    <Content Include="content\Sounds\Duck.mp3" />
-    <Content Include="content\Sounds\ElephantAngry.mp3" />
-    <Content Include="content\Sounds\Hog.mp3" />
-    <Content Include="content\Sounds\HorseWalkingInWater.mp3" />
-    <Content Include="content\Sounds\JungleAnimalsSound.mp3" />
-    <Content Include="content\Sounds\LionRoar.mp3" />
-    <Content Include="content\Sounds\Monkey.mp3" />
-    <Content Include="content\Sounds\Mosquito.mp3" />
-    <Content Include="content\Sounds\MountainLion.mp3" />
-    <Content Include="content\Sounds\Owl.mp3" />
-    <Content Include="content\Sounds\Peacock.mp3" />
-    <Content Include="content\Sounds\PigSqueal.mp3" />
-    <Content Include="content\Sounds\Sheep.mp3" />
-    <Content Include="content\Sounds\Tiger.mp3" />
-    <Content Include="content\Sounds\TigerGrowl.mp3" />
-    <Content Include="content\Sounds\Vulture.mp3" />
-    <Content Include="content\Sounds\Woodpecker.mp3" />
+    <Content Include="content\Sounds\Bee.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\CatMeaw.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Chicken.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Cow.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Dog.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Duck.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\ElephantAngry.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Hog.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\HorseWalkingInWater.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\JungleAnimalsSound.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\LionRoar.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Monkey.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Mosquito.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\MountainLion.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Owl.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Peacock.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\PigSqueal.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Sheep.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Tiger.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\TigerGrowl.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Vulture.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\Sounds\Woodpecker.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

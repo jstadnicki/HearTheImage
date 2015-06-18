@@ -20,6 +20,8 @@ namespace HearTheImage
                 case "gallinacean":
                 case "gallinaceous bird":
                     return new StorySound(".\\content\\sounds\\Cow.mp3");
+                case "truecat":
+                    return new StorySound(".\\content\\sounds\\CatMeaw.mp3");
                 case "Duck":
                 case "anseriform bird":
                 case "duck's egg":
@@ -31,7 +33,7 @@ namespace HearTheImage
                     return new StorySound(".\\content\\sounds\\Duck.mp3");
                     
             }
-            throw new NotImplementedException();
+            return null;
         }
     }
 }
